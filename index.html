@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trip Tea | Lalitpur, Kathmandu</title>
+    <style>
+        /* --- CSS STYLES --- */
+        :root {
+            --primary-color: #c0392b; /* Nepali Red */
+            --secondary-color: #e67e22;
+            --accent-color: #f39c12;
+            --dark-color: #2c3e50;
+            --bg-color: #fffcf5;
+            --text-color: #333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        header {
+            height: 85vh;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 0 20px;
+        }
+
+        header h1 {
+            font-size: 4.5rem;
+            margin-bottom: 15px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+            font-weight: 800;
+        }
+
+        header p {
+            font-size: 1.6rem;
+            margin-bottom: 25px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+
+        .btn {
+            padding: 15px 35px;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(192, 57, 43, 0.4);
+        }
+
+        .btn:hover {
+            background-color: #a93226;
+            transform: translateY(-2px);
+        }
+
+        /* Sections General */
+        section {
+            padding: 70px 10%;
+        }
+
+        h2 {
+            text-align: center;
+            color: var(--dark-color);
+            font-size: 2.8rem;
+            margin-bottom: 50px;
+            text-transform: uppercase;
+            font-weight: 800;
+        }
+
+        /* Special Highlight Section */
+        .highlight-special {
+            background: linear-gradient(135deg, #c0392b, #e74c3c);
+            color: white;
+            text-align: center;
+        }
+
+        .highlight-special h2 {
+            color: white;
+        }
+
+        .special-card {
+            background: white;
+            color: var(--text-color);
+            max-width: 650px;
+            margin: 0 auto;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        .special-card h3 {
+            color: var(--primary-color);
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            font-weight: 800;
+        }
+
+        .price {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--dark-color);
+            margin-top: 20px;
+            display: block;
+        }
+
+        /* Menu Section */
+        .menu-section {
+            margin-bottom: 60px;
+        }
+
+        .menu-section-title {
+            color: var(--primary-color);
+            font-size: 2rem;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 4px solid var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-weight: 800;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
+
+        .menu-category {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+
+        .menu-category:hover {
+            transform: translateY(-5px);
+        }
+
+        .menu-category h4 {
+            color: var(--dark-color);
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px dashed #ddd;
+        }
+
+        .item-info {
+            flex: 1;
+        }
+
+        .item-name {
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: var(--dark-color);
+        }
+
+        .item-desc {
+            font-size: 0.85rem;
+            color: #888;
+            display: block;
+            margin-top: 3px;
+        }
+
+        .item-price {
+            font-weight: 800;
+            font-size: 1.1rem;
+            color: var(--primary-color);
+            white-space: nowrap;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        .footer-info p {
+            margin-bottom: 12px;
+            font-size: 1.1rem;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.8rem; }
+            .nav-links { display: none; }
+            .menu-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">🍵 Trip Tea</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#special">Special</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Header / Hero -->
+    <header id="home">
+        <h1>Trip Tea</h1>
+        <p>Best Tea & Momo in Town | Lalitpur, Kathmandu</p>
+        <a href="#menu" class="btn">View Menu</a>
+    </header>
+
+    <!-- Special Highlight -->
+    <section id="special" class="highlight-special">
+        <h2>⭐ Special Recommendation ⭐</h2>
+        <div class="special-card">
+            <h3>The Royal Masala Chiya</h3>
+            <p>A rich and creamy special Nepali tea brewed with premium spices, ginger, and cardamom. Served the traditional way with milk.</p>
+            <span class="price">Rs 55</span>
+        </div>
+    </section>
+
+    <!-- Full Menu -->
+    <section id="menu">
+        <h2>Our Menu</h2>
+
+        <!-- Tea & Coffee -->
+        <div class="menu-section">
+            <h3 class="menu-section-title">☕ TEA & COFFEE (चिया र कफी)</h3>
+            <div class="menu-grid">
+                <div class="menu-category">
+                    <h4>🍵 Chiya (चिया)</h4>
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <span class="item-name">Plain Tea (कालो चिया)</span>
+                        </div>
+                        <span class="item-price">Rs 30</span>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <span class="item-name">Milk Tea (दूध चिया)</span>
+                        </div>
+                        <span class="item-price">Rs 45</span>
+                    </div>
+                    <div class="menu-item" style="background: linear-gradient(to right, #fff3cd, #fff8e1); padding: 10px; border-radius: 8px;">
+                        <div class="item-info">
+                            <span class="item-name">Masala Chai (मसला चिया)</span>
+                            <span class="item-desc">Most Popular!</span>
+                        </div>
+                        <span class="item-price" style="color: #c0392b;">Rs 55</span>
+                    </div>
+                </div>
+                <div class="menu-category">
+                    <h4>☕ Coffee (कफी)</h4>
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <span class="item-name">Black Coffee (कालो कफी)</span>
+                        </div>
+                        <span class="item-price">Rs 60</span>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <span class="item-name">Milk Coffee (दूध कफी)</span>
+                        </div>
+                        <span class="item-price">Rs 100</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Momo Delight -->
+        <div class="menu-section">
+            <h3 class="menu-section-title">🥟 MOMO DELIGHT (मोमो)</h3>
+            <p style="text-align: center; color: #666; margin-bottom: 20px; font-style: italic;">
+                (Exactly 10 pieces per plate, served with traditional tomato-sesame soup achar)
+            </p>
+            <div class="menu-grid">
+                <div class="menu-category">
+                    <h4>🥬 Veg Momo</h4>
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <span class="item-name">Veg Steamed Momo</span>
+                        </div>
+                        <span class="item-price">Rs 120</span>
+                    </div>
+                </div>
+                <div class="menu-category">
+                    <h4>🍖 Non-Veg Momo</h4>
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <span class="item-name">Buff Steamed Momo</span>
+                        </div>
+                        <span class="item-price">Rs 130</span>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <span class="item-name">Chicken Steamed Momo</span>
+                        </div>
+                        <span class="item-price">Rs 150</span>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <span class="item-name">Fried Momo (Buff/Chicken)</span>
+                        </div>
+                        <span class="item-price">Rs 160</span>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <span class="item-name">Jhol Momo</span>
+                            <span class="item-desc">(Momo in cold, spicy soup)</span>
+                        </div>
+                        <span class="item-price">Rs 160</span>
+                    </div>
+                    <div class="menu-item" style="background: linear-gradient(to right, #fadbd8, #fdedec); padding: 12px; border-radius: 8px; border: 2px solid #c0392b;">
+                        <div class="item-info">
+                            <span class="item-name">⭐ C-Momo (Chilli Momo)</span>
+                            <span class="item-desc">Spicy pan-tossed</span>
+                        </div>
+                        <span class="item-price" style="color: #c0392b;">Rs 180</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-info">
+            <h2 style="color: white; margin-bottom: 20px;">Trip Tea 🍵</h2>
+            <p>📍 Lalitpur, Kathmandu, Nepal</p>
+            <p>📞 +977 98XXXXXXXX</p>
+            <br>
+            <p><strong>Open Daily:</strong> 8:00 AM - 9:00 PM</p>
+            <br>
+            <p>&copy; 2024 Trip Tea. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
